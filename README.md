@@ -54,14 +54,19 @@ This example demonstrates on how to configure RNBD451 in Host-less mode and crea
 
 - [MPLAB X IDE ](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide#tabs)
 
-    - Version: 6.10
-	- XC32 Compiler v4.10
-	- MPLAB® Code Configurator v5.3.7
-	- SAMD21_DFP v3.6.144
+    - Version: 6.20
+	- XC32 Compiler v4.40
+	- MPLAB® Code Configurator v5.7.1
+	- PIC32CX-BZ_DFP v1.4.243
 	- MCC Harmony
-	  - csp version: v3.18.0
-	  - dev_packs: v3.18.0
-	  - wireless_rnbd: v2.0.0
+	  - csp version: v3.19.5
+	  - core version: v3.13.5
+	  - CMSIS-FreeRTOS: v11.1.0
+	  - CMSIS_5: v5.9.0
+	  - wireless_pic32cxbz_wbz: v1.4.0
+	  - wireless_ble: v1.3.0
+	  - wolfssl version: v5.4.0
+	  - crypto version: v3.8.2
 
 - Any Serial Terminal application like [TERA TERM](https://download.cnet.com/Tera-Term/3000-2094_4-75766675.html) terminal application
 
