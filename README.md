@@ -131,6 +131,12 @@ This example demonstrates on how to configure RNBD451 in Host-less mode and crea
 - Copy the "app_ble" folder, "app_timer" folder, "app.c" and "app.h" which can be found by navigating to the following path: "...\firmware\src"
 - Paste the folder under source files in your project folder (...\firmware\src).
 
+The user can achieve the Remote Command mode control functionality by making use of the transparent UART service. To get into the Remote Command mode from a central device, the following steps must be done.
+
+- The two devices are already connected, secured and bonded.
+
+- The user has to send the below command via Transparent Control characteristic to make the RNBD451 to enter into the 
+
 **Step 6** - Clean and build the project. To run the project, select "Make and program device" button.
 
 ## 6. Board Programming<a name="step6">
