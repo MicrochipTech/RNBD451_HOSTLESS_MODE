@@ -31,9 +31,11 @@ Checkout the <a href="https://microchipsupport.force.com/s/" target="_blank">Tec
 
 ## 1. Introduction<a name="step1">
 
-This application demonstrates the RNBD451 remote command feature. This feature allows the control of an RNBD451 module without the use of a host microcontroller remotely from either another RNBD451 module or a mobile application. The remote command feature works by using a special BLE GATT service that emulates a wireless serial connection called transparent UART mode. This combined with a unique command set allows remote functionality of the module. Two RNBD451 modules will be used for implementing the Remote command feature. One will be called the controller device and the other will be Remote/Host-less Module. The controller Module is connected to a host MCU device and is in control of the Remote Module. The Remote Module is host-less configured to connect to the controller module. 
+This application demonstrates the RNBD451 remote command feature. This feature allows the control of an RNBD451 module without the use of a host microcontroller remotely from either another RNBD451 module or a mobile application. 
 
-![](Docs/Setup.PNG)
+The remote command feature works by using a special BLE GATT service that emulates a wireless serial connection called transparent UART mode. This combined with a unique command set allows remote functionality of the module. Please check this [link](https://onlinedocs.microchip.com/oxy/GUID-A87FCFF4-A9D1-4EA7-905C-92DA42132554-en-US-2/GUID-84319E16-DCC3-4C50-9B66-83AB732176B2.html) for further details.
+
+![](docs/setup.png)
 
 This example demonstrates on how to configure RNBD451 in Host-less mode and create a wireless alarm application. This application uses WBZ451 Curiosity board as the central device. On initialization the WBZ451 device will establish a secure and bonded BLE connection with the remote RNBD451 module and will be in Remote Command mode of the RNBD451 Remote/host-less Module. Once there is a button press on WBZ451 board the LED and the solenoid connected to the RNBD451 Host-less device will be switched on/off. 
 
