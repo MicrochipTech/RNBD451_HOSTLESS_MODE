@@ -119,14 +119,12 @@ static void APP_BLE_Sensor_Button_Callback(uintptr_t context)
     }
     if(!b_button_debounce)
     {
-//        appMsg.msgId = APP_MSG_BLE_ENT_RMT_MODE2;
         appMsg.msgId = APP_MSG_RMT_BLE_IO_ON;
         OSAL_QUEUE_SendISR(&appData.appQueue, &appMsg);
         b_button_debounce = true;
     }  
     else
     {
-//        appMsg.msgId = APP_MSG_BLE_ENT_RMT_MODE3;
         appMsg.msgId = APP_MSG_RMT_BLE_IO_OFF;
         OSAL_QUEUE_SendISR(&appData.appQueue, &appMsg);
         b_button_debounce = false;
@@ -186,12 +184,11 @@ void APP_Tasks ( void )
         case APP_STATE_INIT:
         {
             bool appInitialized = true;
-            //appData.appQueue = xQueueCreate( 10, sizeof(APP_Msg_T) );
             APP_BleStackInit();
             if (appInitialized)
             {
                 printf("Scanning Started\r\n");
-                BLE_GAP_SetScanningEnable(true, BLE_GAP_SCAN_FD_DISABLE, BLE_GAP_SCAN_MODE_OBSERVER, 1200);   //mmr
+                BLE_GAP_SetScanningEnable(true, BLE_GAP_SCAN_FD_DISABLE, BLE_GAP_SCAN_MODE_OBSERVER, 1200);
                 EIC_CallbackRegister(EIC_PIN_0,APP_BLE_Sensor_Button_Callback,0);
                 appData.state = APP_STATE_SERVICE_TASKS;
             }
@@ -223,10 +220,7 @@ void APP_Tasks ( void )
                     if(result==0)
                     {
                         printf("IO ON send:%d\r\n",result);
-//                        appMsg.msgId = APP_MSG_BLE_EXT_RMT;
-//                        OSAL_QUEUE_SendISR(&appData.appQueue, &appMsg);
                     }
-                    
                 }
                 else if(p_appMsg->msgId==APP_MSG_RMT_BLE_IO_OFF)
                 {
@@ -239,8 +233,6 @@ void APP_Tasks ( void )
                     if(result==0)
                     {
                         printf("IO ON send:%d\r\n",result);
-//                        appMsg.msgId = APP_MSG_BLE_EXT_RMT;
-//                        OSAL_QUEUE_SendISR(&appData.appQueue, &appMsg);
                     }
                 }
                 else if(p_appMsg->msgId==APP_MSG_BLE_SEND_DATA)
@@ -251,7 +243,7 @@ void APP_Tasks ( void )
                     uint16_t result=BLE_TRSPC_SendData(conn_hdl,3,&rmt_data);
                     printf("data send:%d\r\n",result);
                 }
-                else if(p_appMsg->msgId == APP_MSG_BLE_RECIEVE_CHAT_EVT)      //APP_TIMER_SCAN_DELAY
+                else if(p_appMsg->msgId == APP_MSG_BLE_RECIEVE_CHAT_EVT)      
                 {
                     uint8_t data_len;
                     uint8_t data[150];
@@ -271,7 +263,7 @@ void APP_Tasks ( void )
                 else if(p_appMsg->msgId==APP_MSG_BLE_ENT_RMT_MODE)
                 {
                     extern uint16_t conn_hdl;
-                    uint8_t rmt_cmd[4]={0x30,0x30,0x30,0x30};
+                    uint8_t rmt_cmd[4]={0x30,0x30,0x30,0x30}; //Pin set in RNBD451(Using default Pin:0000)
                     uint16_t result=BLE_TRSPC_SendVendorCommand(conn_hdl,APP_RNBD_REMOTE_CMD_ENABLE,4,&rmt_cmd);
                     if (result == MBA_RES_SUCCESS)
                     {   
@@ -285,7 +277,7 @@ void APP_Tasks ( void )
                 {
                     extern uint16_t conn_hdl;
                     printf("Exit rmt\r\n");
-                    uint8_t rmt_cmd[4]={0x30,0x30,0x30,0x30};
+                    uint8_t rmt_cmd[4]={0x30,0x30,0x30,0x30}; //Pin set in RNBD451(Using default Pin:0000)
                     uint16_t result=BLE_TRSPC_SendVendorCommand(conn_hdl,APP_RNBD_REMOTE_CMD_DISABLE,4,&rmt_cmd);
                     if (result == MBA_RES_SUCCESS)
                     {   
@@ -295,19 +287,6 @@ void APP_Tasks ( void )
                         printf("Success:%d\r\n",result);
                     }
                 }
-//                else if(p_appMsg->msgId==APP_MSG_BLE_EXT_RMT_MODE)
-//                {
-//                    extern uint16_t conn_hdl;
-//                    uint8_t rmt_cmd[4]={0x30,0x30,0x30,0x30};
-//                    uint16_t result=BLE_TRSPC_SendVendorCommand(conn_hdl,APP_RNBD_REMOTE_CMD_ENABLE,4,&rmt_cmd);
-//                    if (result == MBA_RES_SUCCESS)
-//                    {   
-//                        APP_Msg_T appMsg;
-//                        appMsg.msgId = APP_MSG_BLE_SEND_DATA;
-//                        OSAL_QUEUE_Send(&appData.appQueue, &appMsg, 0);
-//                        printf("Success:%d\r\n",result);
-//                    }
-//                }
                 else if(p_appMsg->msgId == APP_MSG_BLE_SCAN_EVT)
                 {
                     uint16_t connStatus;
