@@ -44,7 +44,7 @@ This example demonstrates on how to configure RNBD451 in Host-less mode and crea
 
 | TOOLS | QUANTITY |
 | :- | :- |
-| [RNBD451 Add On Board](https://www.microchip.com/en-us/development-tool/ev25f14a#:~:text=The%20RNBD451%20Add%20On%20Board,%E2%84%A2%20Add%20On%20Bus%20Standard.) | 2 |
+| [RNBD451 Add On Board](https://www.microchip.com/en-us/development-tool/ev25f14a#:~:text=The%20RNBD451%20Add%20On%20Board,%E2%84%A2%20Add%20On%20Bus%20Standard.) | 1 |
 | [WBZ451 Curiosity Board](https://www.microchip.com/en-us/development-tool/ev96b94a) | 1 |
 | [Solenoid lock](https://amzn.in/d/cmq67zT) | 1 |
 | [DC 3V Relay High Level Driver](https://amzn.in/d/4CCwwRJ) | 1 |
